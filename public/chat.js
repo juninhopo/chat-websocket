@@ -44,6 +44,8 @@ document
   .getElementById("message_input")
   .addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
+      event.preventDefault(); // Impede a propagação do evento
+
       const text = event.target.value;
 
       if (!text.trim()) return; // Adiciona uma verificação para não enviar mensagens vazias
@@ -67,8 +69,6 @@ document
 
     const messageInput = document.getElementById('message_input');
 
-    console.log(messageInput)
-
     const text = messageInput.value
 
     if (!text.trim()) return; // Adiciona uma verificação para não enviar mensagens vazias
@@ -78,8 +78,8 @@ document
       text,
       username,
     };
-
-    event.target.value = "";
+    
+    messageInput.value = "";
 
     socket.emit("message", data);
   });
