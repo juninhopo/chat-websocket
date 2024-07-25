@@ -25,7 +25,7 @@ function createMessage(data) {
 
 document.getElementById(
   "username"
-).innerHTML = `Olá ${username} - Você está na sala: ${room}`;
+).innerHTML = `Olá <strong>${username}</strong> - Você está na sala: <strong>${room}</strong>`;
 
 socket.emit(
   "select_room",
