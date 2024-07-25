@@ -76,6 +76,11 @@ input {
   margin-top: 5px;
 }
 
+#username {
+  margin-top: 5px;
+  align-self: center;
+}
+
 .logout {
   background: rgb(56, 3, 3);
 
