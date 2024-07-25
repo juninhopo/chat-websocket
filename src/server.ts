@@ -1,4 +1,6 @@
 import { serverHttp } from "./http";
 import "./websocket";
 
-serverHttp.listen(3333, () => console.log("🚀 Server is Running!"));
+const port = process.env.PORT || 3333;
+
+serverHttp.listen(port, () => console.log("🚀 Server is Running!"));
