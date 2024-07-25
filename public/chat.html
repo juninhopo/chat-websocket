@@ -26,11 +26,34 @@
         placeholder="Digite sua mensagem"
         id="message_input"
       />
+
+      <button
+        id="message_button"
+        type="button"
+      >
+      Enviar
+      </button>
+
       <footer></footer>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
     <script src="./chat.js"></script>
+    <!-- <script>
+      document
+        .getElementById('message_button')
+        .addEventListener('click', function() {
+          const messageInput = document.getElementById('message_input');
+          const message = messageInput.value;
+
+          // Envie a mensagem usando a lógica do seu chat
+          // Por exemplo, usando socket.io
+          if (message.trim() !== '') {
+            socket.emit('chat message', message);
+            messageInput.value = ''; // Limpa o input após enviar a mensagem
+          }
+      });
+    </script> -->
   </body>
 </html>

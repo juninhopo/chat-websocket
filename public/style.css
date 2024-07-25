@@ -69,6 +69,13 @@ input {
   margin-top: 50px;
 }
 
+#message_button {
+  width: 400px;
+  padding: 5px 0px;
+  outline: none;
+  margin-top: 5px;
+}
+
 .logout {
   background: rgb(56, 3, 3);
 

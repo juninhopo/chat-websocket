@@ -11,9 +11,13 @@ function createMessage(data) {
   messagesDiv.innerHTML += `
       <div class="new_message">
           <label class="form-label">
-              <strong>${data.username}</strong> <span>${data.text} - ${dayjs(
-    data.createdAt
-  ).format("DD/MM HH:mm")}</span>
+              <span>
+                ${dayjs(
+                  data.createdAt
+                ).format("DD/MM HH:mm")}
+              </span> - 
+              <strong>${data.username}:</strong> 
+              <span>${data.text}</span>
           </label>
       </div>
     `;
@@ -42,6 +46,8 @@ document
     if (event.key === "Enter") {
       const text = event.target.value;
 
+      if (!text.trim()) return; // Adiciona uma verificação para não enviar mensagens vazias
+
       const data = {
         room,
         text,
@@ -52,6 +58,30 @@ document
 
       socket.emit("message", data);
     }
+  });
+
+document
+  .getElementById("message_button")
+  .addEventListener("click", (event) => {
+    event.preventDefault(); // Impede a propagação do evento
+
+    const messageInput = document.getElementById('message_input');
+
+    console.log(messageInput)
+
+    const text = messageInput.value
+
+    if (!text.trim()) return; // Adiciona uma verificação para não enviar mensagens vazias
+
+    const data = {
+      room,
+      text,
+      username,
+    };
+
+    event.target.value = "";
+
+    socket.emit("message", data);
   });
 
 socket.on("message", (data) => {
